@@ -213,8 +213,8 @@ Game.prototype.start = function () {
     
     //Add in extra defuses to negate the lack of nopes
     var multiplier = (this.players.length > 5) ? 2 : 1;
-    var count = (6 * multiplier) - this.players.length;
-    for (var i = 0; i < count; i++) {
+    //var count = (6 * multiplier) - this.players.length;
+    for (var i = 0; i < multiplier; i++) {
         this.drawPile.push(new Card(this.generateRandomID(), 'Defuse', $.CARD.DEFUSE, 0));
     }
     
