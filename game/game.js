@@ -376,7 +376,7 @@ Game.prototype.resetDeck = function() {
     var multiplier = (this.players.length > 5) ? 2 : 1;
     
     //Generate cards
-    for (var i = 0; i < 5 * multiplier; i++) {
+    for (var i = 0; i < 10 * multiplier; i++) {
         if (i < 4 * multiplier) {
             //Special
             this.drawPile.push(new Card(this.generateRandomID(), 'Attack', $.CARD.ATTACK, 0));
@@ -396,9 +396,10 @@ Game.prototype.resetDeck = function() {
             this.drawPile.push(new Card(this.generateRandomID(), 'Chilli', $.CARD.REGULAR, 7));
             this.drawPile.push(new Card(this.generateRandomID(), 'Guacamole', $.CARD.REGULAR, 8));
         }
-        
+        if(i < 5 * multiplier){
+            this.drawPile.push(new Card(this.generateRandomID(), 'Nope', $.CARD.NOPE, 3));
+        }
         this.drawPile.push(new Card(this.generateRandomID(), 'Future', $.CARD.FUTURE, 9));
-        this.drawPile.push(new Card(this.generateRandomID(), 'Nope', $.CARD.NOPE, 3));
     }
 }
 
