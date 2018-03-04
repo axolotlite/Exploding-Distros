@@ -399,7 +399,8 @@ Game.prototype.resetDeck = function() {
         if(i < 5 * multiplier){
             this.drawPile.push(new Card(this.generateRandomID(), 'Nope', $.CARD.NOPE, 3));
         }
-        this.drawPile.push(new Card(this.generateRandomID(), 'Future', $.CARD.FUTURE, 9));
+        this.drawPile.push(new Card(this.generateRandomID(), 'Future 3', $.CARD.FUTURE3, 9));
+        this.drawPile.push(new Card(this.generateRandomID(), 'Future 5', $.CARD.FUTURE5, 9));
     }
 }
 

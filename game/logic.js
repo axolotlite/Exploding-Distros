@@ -1043,7 +1043,26 @@ module.exports = function(io, EK) {
                     }
 
                     break;
-                case $.CARD.FUTURE:
+
+                case $.CARD.FUTURE5:
+
+                    //Get the first 5 cards on the top of the draw pile
+                    var futureCards = [];
+                    for (var i = 0; i < 5; i++)
+                    {
+                        if (game.drawPile[i]) {
+                            futureCards.push(game.drawPile[i]);
+                        }
+                    }
+
+                    //Send the cards to the player
+                    socket.emit($.GAME.PLAYER.FUTURE, {
+                        cards: futureCards
+                    });
+
+                    break;
+                
+                case $.CARD.FUTURE3:
 
                     //Get the first 3 cards on the top of the draw pile
                     var futureCards = [];
