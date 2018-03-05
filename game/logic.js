@@ -1098,6 +1098,12 @@ module.exports = function(io, EK) {
                 case $.CARD.REVERSE:
                     //Switch direction
                     game.direction *= -1;
+                    //Remove 1 draw amount as 1 skip = 1 draw amount
+                    player.drawAmount -= 1;
+                    //Force player to end turn
+                    if (player.drawAmount < 1) {
+                        endTurn = true;
+                    }
                     break;
             }
         }
