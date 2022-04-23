@@ -13,7 +13,13 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 */
-
+/*General Notes
+    Game is sorted in descending order
+    $() is used in jquery but is it outdated ???
+    solution use document.selectElementById
+    this whole thing deals with how rooms look.
+    fucking end me
+*/
 var Helper = {
     /**
      * Sort by a given field.
@@ -39,28 +45,36 @@ var Login = {
      * Show an error on the login page
      * @param {String} error The error
      */
+
     showError: function(error) {
         $('#login .error').text(error);
+        // document.getElementById('login').getElementsByClassName('error').innerHTML = error;
+        // document.getElementById('login').getElementsByClassName('error').style.display = 'block';
         $('#login .error').fadeIn("slow");
     },
     
     show: function() {
-        $('#login').show();        
+        $('#login').show();  
+        // document.getElementById("login").style.display = "block";      
     },
     
     hide: function() {
         $('#login').hide();
+        // document.getElementById("login").style.display = "none";
     }
 };
-
+//real work starts here
+//change the current user color into green?
 var Lobby = {
     
     show: function() {
         $('#lobby').show();
+        // document.getElementById("lobby").style.display = "block"; 
     },
     
     hide: function() {
         $('#lobby').hide();
+        // document.getElementById("lobby").style.display = "none"; 
     },
     
     /**
@@ -75,15 +89,21 @@ var Lobby = {
             return EK.users[key];
         });
         sorted.sort(Helper.sortBy('name', true));
+        //this goes through the users
         $.each(sorted, function(key, user) {
-            var html = "<div class='user' data-id='" + user.id + "'>" + user.name + "</div>";
-
+            //this uses the constants file to set the color of users
+            var html;
+            
+            if(EK.getCurrentUser().id == user.id) 
+                html = "<div class='user' style=\"color:"+ $C.LOBBY.CURRENT_USER+";\" data-id='" + user.id + "'>" + user.name + "</div>";
+            else
+                html = "<div class='user' style=\"color:"+ $C.LOBBY.IN_LOBBY+";\" data-id='" + user.id + "'>" + user.name + "</div>";
+            
             //Check that we don't double up on adding users
             if ($("#userList .content .user[data-id='" + user.id + "']").length < 1) {
                 $('#userList .content').append(html);
             }
         });
-        
         //Set the user count
         $('#userList .top-bar').text('Connected Users ( ' + Object.keys(EK.users).length + ' )');
     
@@ -146,6 +166,7 @@ var GameRoom = {
         var user = EK.getCurrentUser();
         var game = EK.getCurrentUserGame();
         if (user && game) {
+            //elements in the html, mostly buttons that are hidden and shown according to game flow
             var waitingInput = $('#waitingInput');
             var playingInput = $('#playingInput');
             var startButton = $('#startGameButton');

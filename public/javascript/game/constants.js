@@ -19,6 +19,8 @@ var $C = {
         ROOM: 'lobby',
         CONNECT: 'connected',
         DISCONNECT: 'disconnect',
+        CURRENT_USER: 'green',
+        IN_LOBBY: 'white',
     },
     
     GAME: {
@@ -34,8 +36,8 @@ var $C = {
         UPDATE: 'updateGame',
         DISCARDPILE: 'discardPile',
         STATUS: {
-            WAITING: 'gameWaiting',
-            PLAYING: 'gamePlaying'
+            WAITING: 'Waiting',
+            PLAYING: 'Playing'
         },
         PLAYER: {
             READY: 'playerReady',

@@ -34,8 +34,8 @@ var $ = {
         UPDATE: 'updateGame',
         DISCARDPILE: 'discardPile',
         STATUS: {
-            WAITING: 'gameWaiting',
-            PLAYING: 'gamePlaying'
+            WAITING: 'Waiting',
+            PLAYING: 'Playing'
         },
         PLAYER: {
             READY: 'playerReady',
