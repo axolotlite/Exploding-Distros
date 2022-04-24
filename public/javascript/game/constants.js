@@ -15,12 +15,14 @@
 */
 
 var $C = {
+    COLORS:{
+        CURRENT_USER: 'green',
+        IN_LOBBY: 'white',
+    },
     LOBBY: {
         ROOM: 'lobby',
         CONNECT: 'connected',
         DISCONNECT: 'disconnect',
-        CURRENT_USER: 'green',
-        IN_LOBBY: 'white',
     },
     
     GAME: {
@@ -35,6 +37,7 @@ var $C = {
         WIN: 'winGame',
         UPDATE: 'updateGame',
         DISCARDPILE: 'discardPile',
+        CHAT: 'chat',
         STATUS: {
             WAITING: 'Waiting',
             PLAYING: 'Playing'

@@ -89,7 +89,17 @@ module.exports = function(io, EK) {
                 });
                 return;
             }
-
+            // console.log(data.nickname in $.FILTER);
+            //disconnect the user if his name is filtered 
+            for(word of $.FILTER){
+                if(data.nickname.toLowerCase().includes(word)){
+                    socket.emit($.LOBBY.CONNECT, {
+                        error: 'Filtered name, please input another nickname'
+                    });
+                    return;
+                }
+            }
+            
             var nickname = data.nickname;
 
             //Check if a user with name is connected
@@ -851,6 +861,30 @@ module.exports = function(io, EK) {
                 });
             }
         });
+
+        socket.on($.GAME.CHAT,function(data){
+            var valid = (data && data.hasOwnProperty('user') && data.hasOwnProperty('text'));
+            
+            if (!valid) {
+                socket.emit($.GAME.CHAT, {
+                    error: 'Invalid Text'
+                });
+                return;
+            }
+            if(data.text == "")
+                return;
+            //don't say naughty words
+            //filtered words can be added in the backend constants
+            for(word of $.FILTER){
+                data.text = data.text.replaceAll(new RegExp('('+word+')','gi'),'[REDACTED]');
+            }
+            
+            //Tell everyone what the user has written
+            io.emit($.GAME.CHAT, data);
+    
+            
+        });
+
     });
     
     //************ Socket methods ************//

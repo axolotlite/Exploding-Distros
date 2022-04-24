@@ -45,7 +45,11 @@ jQuery(document).ready(function($) {
         var nickname = $('#nameInput').val();
         io.emit($C.LOBBY.CONNECT, { nickname: nickname });
     });
-    
+    //adding pressing enter functionality to loginButton
+    $("#nameInput").bind('keypress',function(e){
+        if(e.which == '13')
+            $("#loginButton").click();
+    });
     $("#newGameButton").bind('click touchstart', function(e) {
         e.preventDefault();
         var name = prompt("Type in a title:", "bob");
@@ -250,7 +254,21 @@ jQuery(document).ready(function($) {
             });
         }
     });
-    
+    //new chat button
+    $("#chatButton").bind("click touchstart","#chatText", function(e){
+        var text = $('#chatText').val();
+        //should i send username in here?
+        //example of what the message should look like
+        //send the username and the text inputted to logChat through io
+        // console.log(e);
+        io.emit($C.GAME.CHAT, { user:main.getCurrentUser().name,text: text} );
+        $("#chatText").val('');
+    });
+    //handle enter presses in textbox
+    $("#chatText").bind("click touchstart keypress", function(e){
+        if(e.which == '13')
+            $("#chatButton").click();
+    });
     //Card click
     $(document).on('click touchstart', '#playingInput .card', function(e) {
         e.preventDefault();
@@ -819,6 +837,13 @@ jQuery(document).ready(function($) {
 
             }
         }
+    });
+    
+    io.on($C.GAME.CHAT, function(data){
+        if(data.hasOwnProperty('error')){
+            GameRoom.logError(data.error);
+        }
+        GameRoom.logChat(data.user,data.text);
     });
     
     /**

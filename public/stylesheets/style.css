@@ -152,6 +152,13 @@ html, body {
     height: calc(100% - 35px);
     width: 100%;
 }
+.text-content{
+    padding: 5px;
+    display: block;
+    overflow-y: scroll;
+    height: calc(85% - 35px);
+    width: 100%;
+}
 
 .message {
     margin-bottom: 5px; 

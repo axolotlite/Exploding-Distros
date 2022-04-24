@@ -93,12 +93,13 @@ var Lobby = {
         $.each(sorted, function(key, user) {
             //this uses the constants file to set the color of users
             var html;
-            
-            if(EK.getCurrentUser().id == user.id) 
-                html = "<div class='user' style=\"color:"+ $C.LOBBY.CURRENT_USER+";\" data-id='" + user.id + "'>" + user.name + "</div>";
+            var currentUser = EK.getCurrentUser();
+            // console.log(user.game)
+            if(currentUser.id == user.id) 
+                html = "<div class='user' style=\"color:"+ $C.COLORS.CURRENT_USER+";\" data-id='" + user.id + "'>" + user.name + "</div>";
             else
-                html = "<div class='user' style=\"color:"+ $C.LOBBY.IN_LOBBY+";\" data-id='" + user.id + "'>" + user.name + "</div>";
-            
+                html = "<div class='user' style=\"color:"+ $C.COLORS.IN_LOBBY+";\" data-id='" + user.id + "'>" + user.name + "</div>";
+            // if(currentUser.currentGame)
             //Check that we don't double up on adding users
             if ($("#userList .content .user[data-id='" + user.id + "']").length < 1) {
                 $('#userList .content').append(html);
@@ -527,7 +528,15 @@ var GameRoom = {
             scrollTop: $('#messages')[0].scrollHeight
         }, 500);
     },
-    
+    /**
+     * Logs what the user is writing into the chat
+     * will still need to be modified in case current user returns the session user
+     * @param {String} user
+     * @param {String} text 
+     */
+    logChat: function(username, text){
+        this.logMessage('[' + username + '] ' + text);
+    },
     /**
      * Log an error into the chat.
      * This appends a '[Error]' tag.
@@ -570,7 +579,7 @@ var GameRoom = {
      * This appends a '[Chat]' tag.
      * @param {String} message The message
      */
-    logChat: function(message) {
-        this.logMessage('[Chat] ' + message);
-    }
+    // logChat: function(message) {
+    //     this.logMessage('[Chat] ' + message);
+    // }
 };
