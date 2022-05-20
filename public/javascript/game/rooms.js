@@ -146,8 +146,8 @@ var Lobby = {
 };
 
 const images = ["defuse.png", "attack.png", "skip.png", "favor.png", "shuffle.png", "reverse.png",
-        "ubuntu.png", "pop.png", "mint.png", "fedora.png", "arch.png",
-        "nope.png", "future3.png", "future5.png"];
+        "nope.png", "future3.png", "future5.png",
+        "ubuntu.png", "pop.png", "mint.png", "fedora.png", "arch.png"];
 
 
 var GameRoom = {
