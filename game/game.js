@@ -390,11 +390,11 @@ Game.prototype.resetDeck = function() {
             }
             
             //Regular
-            this.drawPile.push(new Card(this.generateRandomID(), 'Tomato', $.CARD.REGULAR, 9));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Barbecue', $.CARD.REGULAR, 10));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Mustard', $.CARD.REGULAR, 11));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Chilli', $.CARD.REGULAR, 12));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Guacamole', $.CARD.REGULAR, 13));
+            this.drawPile.push(new Card(this.generateRandomID(), 'Ubuntu', $.CARD.REGULAR, 9));     //Tomato
+            this.drawPile.push(new Card(this.generateRandomID(), 'PopOS', $.CARD.REGULAR, 10));     //Barbecue
+            this.drawPile.push(new Card(this.generateRandomID(), 'Mint', $.CARD.REGULAR, 11));      //Mustard
+            this.drawPile.push(new Card(this.generateRandomID(), 'Fedora', $.CARD.REGULAR, 12));    //Chilli
+            this.drawPile.push(new Card(this.generateRandomID(), 'Arch', $.CARD.REGULAR, 13));      //Guacamole
         }
         this.drawPile.push(new Card(this.generateRandomID(), 'Nope', $.CARD.NOPE, 6));
         this.drawPile.push(new Card(this.generateRandomID(), 'Future 3', $.CARD.FUTURE3, 7));
