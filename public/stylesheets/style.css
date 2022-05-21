@@ -428,19 +428,28 @@ html, body {
     border: 5px solid #B58865;
 }
 
-.card span{
+.card .textnormal{
+    display: inline-block;
+    vertical-align: middle;
+    line-height: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+    padding: 10px; 
+}
+
+.card .texthover{
     display: none;
     vertical-align: middle;
     line-height: normal;
     word-wrap: break-word;
     word-break: break-all;
     white-space: normal;
-    /* padding: 10px;  */
     position: absolute;
     top: -22px;
 }
 
-.card:hover span{
+.card:hover .texthover{
     display: block;
 }
 
