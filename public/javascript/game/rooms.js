@@ -13,7 +13,13 @@
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
 */
-
+/*General Notes
+    Game is sorted in descending order
+    $() is used in jquery but is it outdated ???
+    solution use document.selectElementById
+    this whole thing deals with how rooms look.
+    fucking end me
+*/
 var Helper = {
     /**
      * Sort by a given field.
@@ -39,28 +45,36 @@ var Login = {
      * Show an error on the login page
      * @param {String} error The error
      */
+
     showError: function(error) {
         $('#login .error').text(error);
+        // document.getElementById('login').getElementsByClassName('error').innerHTML = error;
+        // document.getElementById('login').getElementsByClassName('error').style.display = 'block';
         $('#login .error').fadeIn("slow");
     },
     
     show: function() {
-        $('#login').show();        
+        $('#login').show();  
+        // document.getElementById("login").style.display = "block";      
     },
     
     hide: function() {
         $('#login').hide();
+        // document.getElementById("login").style.display = "none";
     }
 };
-
+//real work starts here
+//change the current user color into green?
 var Lobby = {
     
     show: function() {
         $('#lobby').show();
+        // document.getElementById("lobby").style.display = "block"; 
     },
     
     hide: function() {
         $('#lobby').hide();
+        // document.getElementById("lobby").style.display = "none"; 
     },
     
     /**
@@ -75,15 +89,22 @@ var Lobby = {
             return EK.users[key];
         });
         sorted.sort(Helper.sortBy('name', true));
+        //this goes through the users
         $.each(sorted, function(key, user) {
-            var html = "<div class='user' data-id='" + user.id + "'>" + user.name + "</div>";
-
+            //this uses the constants file to set the color of users
+            var html;
+            var currentUser = EK.getCurrentUser();
+            // console.log(user.game)
+            if(currentUser.id == user.id) 
+                html = "<div class='user' style=\"color:"+ $C.COLORS.CURRENT_USER+";\" data-id='" + user.id + "'>" + user.name + "</div>";
+            else
+                html = "<div class='user' style=\"color:"+ $C.COLORS.IN_LOBBY+";\" data-id='" + user.id + "'>" + user.name + "</div>";
+            // if(currentUser.currentGame)
             //Check that we don't double up on adding users
             if ($("#userList .content .user[data-id='" + user.id + "']").length < 1) {
                 $('#userList .content').append(html);
             }
         });
-        
         //Set the user count
         $('#userList .top-bar').text('Connected Users ( ' + Object.keys(EK.users).length + ' )');
     
@@ -124,6 +145,11 @@ var Lobby = {
     
 };
 
+const images = ["defuse.png", "attack.png", "skip.png", "favor.png", "shuffle.png", "reverse.png",
+        "nope.png", "future3.png", "future5.png",
+        "ubuntu.png", "pop.png", "mint.png", "fedora.png", "arch.png"];
+
+
 var GameRoom = {
     
     /**
@@ -146,6 +172,7 @@ var GameRoom = {
         var user = EK.getCurrentUser();
         var game = EK.getCurrentUserGame();
         if (user && game) {
+            //elements in the html, mostly buttons that are hidden and shown according to game flow
             var waitingInput = $('#waitingInput');
             var playingInput = $('#playingInput');
             var startButton = $('#startGameButton');
@@ -262,7 +289,7 @@ var GameRoom = {
         $.each($C.CARD, function(key, type) {
             if (type != $C.CARD.EXPLODE) {
                 var html = "<div data-selected='false' data-type='" + type + "' class='card noselect card-" + type.toLowerCase() +"'>" +
-                                "<span>" + type + "</span>" +
+                                 "<span class='textnormal'>" + type + "</span>" +
                             "</div>";
                 $('#namedStealPopup #cardDisplay').append(html);
             }
@@ -275,7 +302,8 @@ var GameRoom = {
         
         $.each(cards, function(index, card) {
             var html = "<div data-selected='false' data-id='" + card.id +"' class='card noselect card-" + card.type.toLowerCase() +"'>" +
-                            "<span>" + card.name + "</span>" +
+                        "<img src='assets/" + images[card.image] + "' alt='" + card.name + "' class='card-img'>" + "</img>" +
+                        "<span class='texthover'>" + card.name + "</span>" +
                         "</div>";
             
             element.append(html);
@@ -506,7 +534,15 @@ var GameRoom = {
             scrollTop: $('#messages')[0].scrollHeight
         }, 500);
     },
-    
+    /**
+     * Logs what the user is writing into the chat
+     * will still need to be modified in case current user returns the session user
+     * @param {String} user
+     * @param {String} text 
+     */
+    logChat: function(username, text){
+        this.logMessage('[' + username + '] ' + text);
+    },
     /**
      * Log an error into the chat.
      * This appends a '[Error]' tag.
@@ -549,7 +585,7 @@ var GameRoom = {
      * This appends a '[Chat]' tag.
      * @param {String} message The message
      */
-    logChat: function(message) {
-        this.logMessage('[Chat] ' + message);
-    }
+    // logChat: function(message) {
+    //     this.logMessage('[Chat] ' + message);
+    // }
 };

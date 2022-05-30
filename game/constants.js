@@ -15,6 +15,9 @@
 */
 
 var $ = {
+    FILTER: [
+        "redacted"
+    ],
     LOBBY: {
         ROOM: 'lobby',
         CONNECT: 'connected',
@@ -33,9 +36,10 @@ var $ = {
         WIN: 'winGame',
         UPDATE: 'updateGame',
         DISCARDPILE: 'discardPile',
+        CHAT: 'chat',
         STATUS: {
-            WAITING: 'gameWaiting',
-            PLAYING: 'gamePlaying'
+            WAITING: 'Waiting',
+            PLAYING: 'Playing'
         },
         PLAYER: {
             READY: 'playerReady',

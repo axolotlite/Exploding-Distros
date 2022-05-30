@@ -5,7 +5,7 @@
       <meta http-equiv="X-UA-Compatible" content="IE=edge">
       <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 
-      <title>EK</title>
+      <title>ExD</title>
       
       <!-- Dependencies -->
       <script src="javascript/jquery/jquery-1.12.0.min.js"></script>
@@ -28,18 +28,20 @@
   </head>
   <body>
   	<div class="container-fluid">
+        <!-- login element, the first page, stills needs a cool make over -->
         <div id="login" class="room">
             <div class="center text-center" id="loginInput">
                 <div class="center">
-                    <div id="title">EXPLODING KETCHUP</div>
+                    <div id="title">EXPLODING DISTROS</div>
                     <label for="inputdefault">Name</label>
                     <input class="form-control" id="nameInput" type="text" placeholder="Type a name">
                     <button id="loginButton" class="btn btn-success" type="button">Join</button>
                     </br>
-                    <div class="error" style="display: none;"></div>
+                    <div class="error fade-in-error" style="display: none;"></div>
                 </div>
             </div>
         </div>
+        <!-- Lobby that shows users that are currently connected -->
         <div id="lobby" class="room">
             <div id="gameList" class="col-md-10 col-sm-8 col-xs-12">
                 <div class="top-bar text-center">
@@ -66,11 +68,13 @@
                 <div class="content scrollable"></div>
             </div>
         </div>
-    
+        <!-- The game room, where the game is being played -->
         <div id="game" class="room">
+
             <div id="leave">
                 <div id="leaveButton" class="btn btn-danger">X</div>
             </div>
+
             <div id="overlay" style="display: none;">
                 <div id="backdrop"></div>
                 <div id="givePopup" class="popup center text-center">
@@ -95,6 +99,7 @@
                         <button id="giveCardButton" class="btn btn-success" type="button">Give</button>
                     </div>
                 </div>
+
                 <div id="blindStealPopup" class="popup center text-center">
                     <div class="container">
                         <div id="content" >
@@ -117,6 +122,7 @@
                         <button id="cancelPopupButton" class="btn btn-danger" type="button" onclick="GameRoom.hideOverlay();">Cancel</button>
                     </div>
                 </div>
+
                 <div id="discardStealPopup" class="popup center text-center">
                     <div class="container">
                         <div id="content" >
@@ -140,6 +146,7 @@
                         <button id="cancelPopupButton" class="btn btn-danger" type="button" onclick="GameRoom.hideOverlay();">Cancel</button>
                     </div>
                 </div>
+
                 <div id="favorWaitPopup" class="popup center text-center">
                     <div class="container">
                         <div id="content" >
@@ -149,6 +156,7 @@
                         </div>
                     </div>
                 </div>
+
                 <div id="namedStealPopup" class="popup center text-center">
                     <div class="container">
                         <div id="content" >
@@ -181,6 +189,7 @@
                         <button id="cancelPopupButton" class="btn btn-danger" type="button" onclick="GameRoom.hideOverlay();">Cancel</button>
                     </div>
                 </div>
+
                 <div id="favorSelectPopup" class="popup center text-center">
                     <div class="container">
                         <div id="content" >
@@ -203,6 +212,7 @@
                         <button id="cancelPopupButton" class="btn btn-danger" type="button" onclick="GameRoom.hideOverlay();">Cancel</button>
                     </div>
                 </div>
+
                 <div id="discardPilePopup" class="popup center text-center">
                     <div class="container">
                         <div id="content" >
@@ -226,6 +236,7 @@
                     </div>
                 </div>
             </div>
+
             <div id="container">
                 <div id="playArea">
                     <div class="center text-center" style="width: 100%;">
@@ -280,17 +291,28 @@
                     </div>
                 </div>
             </div>
+
             <div id="chat">
                 <div id="chatBox" class="col-md-10 col-sm-8 col-xs-12">
                     <div class="top-bar text-center">
                         Messages
                     </div>
-                    <div id="messages" class="content">
+                    <div id="messages" class="text-content">
                         <div class="message">
                             Welcome!
                         </div>
                     </div>
+                    <!-- Newly added text box -->
+                    <div id="input-form" class="message-box">
+                        <div class="input-group">
+                          <input id="chatText" type="text" class="form-control" placeholder="Chatting...">
+                          <span class="input-group-btn">
+                            <button id="chatButton" class="btn btn-default" type="button">Write</button>
+                          </span>
+                        </div><!-- /input-group -->
+                      </div><!-- /.col-lg-6 -->
                 </div>
+
                 <div id="playerList" class="col-md-2 col-sm-4 col-xs-12">
                     <div class="top-bar text-center">
                         Players ( 0 )
@@ -310,6 +332,7 @@
                         </div>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
