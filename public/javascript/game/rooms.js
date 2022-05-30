@@ -473,6 +473,26 @@ var GameRoom = {
         $('#futurePopup').show();
         $('#playArea button').addClass('disabled');
     },
+    
+    showDrawOverlay: function(card){
+        this.updateCardsForElement(card, $('#endturnPopup #cardDisplay'));
+        $('#overlay').show();
+        $('#overlay .popup').hide();
+        $('#endturnPopup').show();
+        $('#playArea button').addClass('disabled');
+    },
+    showExplosionOverlay: function(){
+        $('#overlay').show();
+        $('#overlay .popup').hide();
+        $('#endturnPopup').show();
+        $('#playArea button').addClass('disabled');
+    },
+    showDiffusalOverlay: function(){
+        $('#overlay').show();
+        $('#overlay .popup').hide();
+        $('#endturnPopup').show();
+        $('#playArea button').addClass('disabled');
+    },
 
     showDiscardPileOverlay: function() {
         $('#overlay').show();

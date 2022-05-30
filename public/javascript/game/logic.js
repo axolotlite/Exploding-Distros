@@ -614,6 +614,7 @@ jQuery(document).ready(function($) {
                 $.each(data.cards, function(index, card) {
                     GameRoom.logLocal("You drew a " + card.name + ".");
                 });
+                GameRoom.showDrawOverlay(data.cards);
             }
             
             //Tell the user if they have to draw more cards
