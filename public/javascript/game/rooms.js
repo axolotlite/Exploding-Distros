@@ -417,7 +417,7 @@ var GameRoom = {
             }
         }
     },
-    
+
     showGiveOverlay: function(EK) {
         this.updateGameOverlay(EK);
         $('#overlay').show();
@@ -465,7 +465,15 @@ var GameRoom = {
         $('#favorSelectPopup').show();
         $('#playingInput button').addClass('disabled');
     },
-    
+
+    showFutureCardsOverlay: function(cards){
+        this.updateCardsForElement(cards, $('#futurePopup #cardDisplay'));
+        $('#overlay').show();
+        $('#overlay .popup').hide();
+        $('#futurePopup').show();
+        $('#playArea button').addClass('disabled');
+    },
+
     showDiscardPileOverlay: function() {
         $('#overlay').show();
         $('#overlay .popup').hide();

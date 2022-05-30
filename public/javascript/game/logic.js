@@ -518,13 +518,17 @@ jQuery(document).ready(function($) {
     
     io.on($C.GAME.PLAYER.FUTURE, function(data) {
         var cards = data.cards;
+        // Gameroom.showFutureCardsOverlay();
         if (cards.length > 0) {
             //Tell player of the cards they see
+            main.gameData.futureCards = cards;
             var string = "You see a ";
             $.each(cards, function(index, card) {
                 string += card.name + ', ';
             });
             string = string.slice(0, -2); //Remove ', '
+            
+            GameRoom.showFutureCardsOverlay(cards);
             GameRoom.logLocal(string);
         } else {
             GameRoom.logLocal('There is nothing to see!');
