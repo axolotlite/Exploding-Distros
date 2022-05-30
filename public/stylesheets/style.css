@@ -423,6 +423,11 @@ html, body {
     border: 5px solid #973A36;
 }
 
+.card-reverse {
+    color: #eeeb25;
+    border: 5px solid #eeeb25;
+}
+
 .card-regular {
     color: #B58865;
     border: 5px solid #B58865;
