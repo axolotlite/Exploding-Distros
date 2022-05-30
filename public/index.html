@@ -40,11 +40,54 @@
                 </div>
             </div>
         </div>
+        <div id="rules" class="room" style="display: none;">
+            <div class="container-fluid">
+                <button id="rulesExit" class="btn btn-success" type="button">Exit</button>
+                <div class="text-left">
+                    <p class="text-center"><span style="font-size:24px"><strong>Exploding Distros Ruleset</strong></span></p>
+                    <p>The deck contains lots of cards, and some of them explode.</p>
+
+                    <p>Basically, the idea is to not explode. If you explode, you lose. If you don&#39;t explode, you win. It&#39;s that simple.</p>
+
+                    <p>While it is your turn, you can play any number of cards. You end your turn by drawing a card.</p>
+
+                    <p><span style="font-size:18px"><strong>Card List:</strong></span></p>
+
+                    <p><strong>Defuse:&nbsp;</strong>is used automatically when you draw an Explode, and will save you from dying and place the Explode back into the draw pile.</p>
+
+                    <p><strong>Nope:&nbsp;</strong>stops any action except for an Explode or a Defuse.</p>
+
+                    <p><strong>Attack:&nbsp;</strong>ends your turn without drawing and forces the next player to take two turns. if used while being attacked, will end both turns and force the next player to take two turns.</p>
+
+                    <p><strong>Skip:&nbsp;</strong>ends your turn without drawing.</p>
+
+                    <p><strong>Favor:&nbsp;</strong>makes another player give you a card of their choice.</p>
+
+                    <p><strong>Shuffle:&nbsp;</strong>shuffles the deck</p>
+
+                    <p><strong>Future:&nbsp;</strong>shows you the next 3 or 5 cards in the draw pile.</p>
+
+                    <p><strong>Reverse:&nbsp;</strong>reverses the turn order.</p>
+
+                    <p><strong>Regular:&nbsp;</strong>does nothing by themselves, but can be combined for special effects.</p>
+
+                    <p><span style="font-size:18px"><strong>Advanced:</strong></span></p>
+
+                    <p><strong>Two of a kind: </strong>play two of the same cards to steal a random card from a player of your choice.</p>
+
+                    <p><strong>Three of a kind:&nbsp;</strong>play three of the same cards to choose a specific card type, and steal it from a player of your choice but only if they have it.</p>
+
+                    <p><strong>Five different:&nbsp;</strong>play 5 different cards to choose a card in the discard pile and add it to your hand.</p>
+
+                </div>
+            </div>
+        </div>
         <div id="lobby" class="room">
             <div id="gameList" class="col-md-10 col-sm-8 col-xs-12">
                 <div class="top-bar text-center">
                     Games
                     <span>
+                        <button id="rulesButton" class="btn btn-success" type="button">Rules</button>
                         <button id="newGameButton" class="btn btn-success" type="button">New Game</button>
                     </span>
                 </div>
