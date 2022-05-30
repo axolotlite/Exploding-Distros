@@ -56,15 +56,12 @@ jQuery(document).ready(function($) {
 
     $("#rulesButton").bind('click touchstart', function(e) {
         e.preventDefault();
-        $("#rules").show();
-        Lobby.hide();
-        GameRoom.hide();
+        $('#rules').show();
     });
 
     $("#rulesExit").bind('click touchstart', function(e) {
         e.preventDefault();
-        $("#rules").hide();
-        Lobby.show();
+        $('#rules').hide();
     });
     
     //Since we dynamically create the button, we have to call the clikc function this way
