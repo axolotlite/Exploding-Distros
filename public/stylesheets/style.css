@@ -2,7 +2,7 @@ html, body {
     width:100%;
     min-width: 100%;
     height: 100%;
-    overflow-y: scroll;
+    /* overflow-y: scroll; */
 }
 
 .room {
@@ -13,14 +13,14 @@ html, body {
     height: 100%;
     top: 0;
     left: 0;
-    overflow: hidden;
+    overflow: auto;
 }
 
 @media (max-width:641px) { /* small devices */ 
-    html, body, .container-fluid, .room {
+    /* html, body, .container-fluid, .room {
         height: 1000px;
         overflow-y: scroll;
-    }
+    } */
     
     #loginInput {
         width: 100% !important;
@@ -51,12 +51,12 @@ html, body {
     } 
 }
 
-@media (max-height: 600px) {
+/* @media (max-height: 600px) {
     html, body, .container-fluid, .room {
         height: 1000px;
         overflow-y: scroll;
     }
-}
+} */
 
 .center {
     position: absolute;
