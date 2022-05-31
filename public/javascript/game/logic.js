@@ -57,6 +57,16 @@ jQuery(document).ready(function($) {
             io.emit($C.GAME.CREATE, { title: name });
         }
     });
+
+    $("#rulesButton").bind('click touchstart', function(e) {
+        e.preventDefault();
+        $('#rules').show();
+    });
+
+    $("#rulesExit").bind('click touchstart', function(e) {
+        e.preventDefault();
+        $('#rules').hide();
+    });
     
     //Since we dynamically create the button, we have to call the clikc function this way
     $(document).on('click touchstart', '#joinGameButton', function(e) {
