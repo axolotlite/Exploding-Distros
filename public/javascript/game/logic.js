@@ -859,9 +859,6 @@ jQuery(document).ready(function($) {
         if(data.hasOwnProperty('error')){
             GameRoom.logError(data.error);
         }
-        console.log("the data then the game id");
-        console.log(data.gameId);
-        console.log(main.getCurrentUserGame().id);
         if(data.gameId === main.getCurrentUserGame().id ){
             GameRoom.logChat(data.user,data.text);
         }
