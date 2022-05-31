@@ -879,7 +879,7 @@ module.exports = function(io, EK) {
                 data.text = data.text.replaceAll(new RegExp('('+word+')','gi'),'[REDACTED]');
             }
             
-            //Tell everyone what the user has written
+            //Tell everyone what the user has written, alongside the game id
             io.emit($.GAME.CHAT, data);
     
             

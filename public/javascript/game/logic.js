@@ -271,7 +271,7 @@ jQuery(document).ready(function($) {
         //example of what the message should look like
         //send the username and the text inputted to logChat through io
         // console.log(e);
-        io.emit($C.GAME.CHAT, { user:main.getCurrentUser().name,text: text} );
+        io.emit($C.GAME.CHAT, { user:main.getCurrentUser().name,text: text, gameId: main.getCurrentUserGame().id} );
         $("#chatText").val('');
     });
     //handle enter presses in textbox
@@ -855,10 +855,16 @@ jQuery(document).ready(function($) {
     });
     
     io.on($C.GAME.CHAT, function(data){
+
         if(data.hasOwnProperty('error')){
             GameRoom.logError(data.error);
         }
-        GameRoom.logChat(data.user,data.text);
+        console.log("the data then the game id");
+        console.log(data.gameId);
+        console.log(main.getCurrentUserGame().id);
+        if(data.gameId === main.getCurrentUserGame().id ){
+            GameRoom.logChat(data.user,data.text);
+        }
     });
     
     /**
