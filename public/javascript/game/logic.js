@@ -42,7 +42,7 @@ jQuery(document).ready(function($) {
     
     $("#loginButton").bind('click touchstart', function(e) {
         e.preventDefault();
-        var nickname = $('#nameInput').val();
+        var nickname = DOMPurify.sanitize($('#nameInput').val());
         io.emit($C.LOBBY.CONNECT, { nickname: nickname });
     });
     //adding pressing enter functionality to loginButton
@@ -256,7 +256,7 @@ jQuery(document).ready(function($) {
     });
     //new chat button
     $("#chatButton").bind("click touchstart","#chatText", function(e){
-        var text = $('#chatText').val();
+        var text = DOMPurify.sanitize($('#chatText').val());
         //should i send username in here?
         //example of what the message should look like
         //send the username and the text inputted to logChat through io
