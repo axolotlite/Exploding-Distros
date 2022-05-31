@@ -352,6 +352,7 @@ html, body {
 
 #cardDisplay {
     overflow-x: scroll;
+    height: 100%;
     width: 100%;
     white-space: nowrap;
 }
@@ -366,6 +367,9 @@ html, body {
     display: inline-block;
     margin-right: 10px;
     border: 5px solid black;
+    position: relative;
+    top: 20px;
+    transition: top 200ms;
 }
 
 .card:first-child {
@@ -373,9 +377,10 @@ html, body {
 }
 
 .card-selected {
-    background: #5bc0de;
-    color: white !important;
-    border: 5px solid white !important;
+    /* background: #5bc0de; */
+    color: purple !important;
+    border: 5px solid purple !important;
+    top: 0px;
 }
 
 .card-nope {
@@ -418,19 +423,39 @@ html, body {
     border: 5px solid #973A36;
 }
 
+.card-reverse {
+    color: #eeeb25;
+    border: 5px solid #eeeb25;
+}
+
 .card-regular {
     color: #B58865;
     border: 5px solid #B58865;
 }
 
-.card span{
+.card .textnormal{
     display: inline-block;
     vertical-align: middle;
     line-height: normal;
     word-wrap: break-word;
     word-break: break-all;
     white-space: normal;
-    padding: 10px;
+    padding: 10px; 
+}
+
+.card .texthover{
+    display: none;
+    vertical-align: middle;
+    line-height: normal;
+    word-wrap: break-word;
+    word-break: break-all;
+    white-space: normal;
+    position: absolute;
+    top: -22px;
+}
+
+.card:hover .texthover{
+    display: block;
 }
 
 .card-big {
@@ -520,4 +545,11 @@ html, body {
 
 #favorWaitPopup .container {
     height: 100%;
+}
+
+/* My additions */
+.card-img{
+    max-width: 100%;
+    max-height: 100%;
+    display: block; /* remove extra space below image */
 }

@@ -202,13 +202,13 @@ Game.prototype.start = function () {
     //Give each player a diffuse and 4 random card from the pile
     for (var key in this.players) {
         var player = this.players[key];
-        player.addCard(new Card(this.generateRandomID(), 'Defuse', $.CARD.DEFUSE, 'a'));
+        player.addCard(new Card(this.generateRandomID(), 'Defuse', $.CARD.DEFUSE, 0));
         this.drawCards(player, 4);
     }
     
     //Add in bombs
     for (var i = 0; i < this.players.length - 1; i ++) {
-        this.drawPile.push(new Card(this.generateRandomID(), 'Explode', $.CARD.EXPLODE, 0));
+        this.drawPile.push(new Card(this.generateRandomID(), 'Explode', $.CARD.EXPLODE, 14));
     }
     
     //Add in extra defuses to negate the lack of nopes
@@ -379,26 +379,26 @@ Game.prototype.resetDeck = function() {
     for (var i = 0; i < 5 * multiplier; i++) {
         if (i < 4 * multiplier) {
             //Special
-            this.drawPile.push(new Card(this.generateRandomID(), 'Attack', $.CARD.ATTACK, 0));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Skip', $.CARD.SKIP, 1));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Favor', $.CARD.FAVOR, 2));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Shuffle', $.CARD.SHUFFLE, 3));
+            this.drawPile.push(new Card(this.generateRandomID(), 'Attack', $.CARD.ATTACK, 1));
+            this.drawPile.push(new Card(this.generateRandomID(), 'Skip', $.CARD.SKIP, 2));
+            this.drawPile.push(new Card(this.generateRandomID(), 'Favor', $.CARD.FAVOR, 3));
+            this.drawPile.push(new Card(this.generateRandomID(), 'Shuffle', $.CARD.SHUFFLE, 4));
             
             //Only add the reverse if we have more than 2 players since with 2 people order doesn't matter
             if (this.players.length > 2) {
-                this.drawPile.push(new Card(this.generateRandomID(), 'Reverse', $.CARD.REVERSE, 3));
+                this.drawPile.push(new Card(this.generateRandomID(), 'Reverse', $.CARD.REVERSE, 5));
             }
             
             //Regular
-            this.drawPile.push(new Card(this.generateRandomID(), 'Tomato', $.CARD.REGULAR, 4));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Barbecue', $.CARD.REGULAR, 5));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Mustard', $.CARD.REGULAR, 6));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Chilli', $.CARD.REGULAR, 7));
-            this.drawPile.push(new Card(this.generateRandomID(), 'Guacamole', $.CARD.REGULAR, 8));
+            this.drawPile.push(new Card(this.generateRandomID(), 'Ubuntu', $.CARD.REGULAR, 9));     //Tomato
+            this.drawPile.push(new Card(this.generateRandomID(), 'PopOS', $.CARD.REGULAR, 10));     //Barbecue
+            this.drawPile.push(new Card(this.generateRandomID(), 'Mint', $.CARD.REGULAR, 11));      //Mustard
+            this.drawPile.push(new Card(this.generateRandomID(), 'Fedora', $.CARD.REGULAR, 12));    //Chilli
+            this.drawPile.push(new Card(this.generateRandomID(), 'Arch', $.CARD.REGULAR, 13));      //Guacamole
         }
-        this.drawPile.push(new Card(this.generateRandomID(), 'Nope', $.CARD.NOPE, 3));
-        this.drawPile.push(new Card(this.generateRandomID(), 'Future 3', $.CARD.FUTURE3, 9));
-        this.drawPile.push(new Card(this.generateRandomID(), 'Future 5', $.CARD.FUTURE5, 9));
+        this.drawPile.push(new Card(this.generateRandomID(), 'Nope', $.CARD.NOPE, 6));
+        this.drawPile.push(new Card(this.generateRandomID(), 'Future 3', $.CARD.FUTURE3, 7));
+        this.drawPile.push(new Card(this.generateRandomID(), 'Future 5', $.CARD.FUTURE5, 8));
     }
 }
 
